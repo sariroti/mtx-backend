@@ -12,9 +12,11 @@ html
           i(class="fas fa-user-circle fa-2x")
         ul(class="dropdown-menu")
           li
-            a(class="dropdown-item", href="/profile") profile
+            a(class="dropdown-item", href="/profile") Profile
+          li
+            a(class="dropdown-item", href="/reset-password") Reset password
       
-    if !user.emailVerified
+    if !user.email_verified
       div(class="center-screen")
         button(type="button", class="btn btn-primary", onclick='resendEmailVerification('+ user +')') Resend Email Verification    
     

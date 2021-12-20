@@ -10,6 +10,8 @@ function save(id, name) {
   jsonDB.push(`/user/${id}`, name);
 }
 
+function changePassword() {}
+
 module.exports = {
   create: save,
   getById,
