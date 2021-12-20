@@ -65,7 +65,7 @@ app.get('/profile', async (req, res) => {
   const payload = {
     name: user.name,
     email: user.email,
-    emailVerified: user.email_verified,
+    email_verified: user.email_verified,
   };
   if (nameDB) {
     payload.name = nameDB;
@@ -84,6 +84,23 @@ app.put('/api/user/profile', async (req, res) => {
 
   userService.create(id, name);
   return res.send({ success: true });
+});
+
+app.get('/reset-password', async (req, res) => {
+  res.render('reset-password', {
+    title: 'reset password',
+    user: req.oidc.user,
+  });
+});
+
+app.post('/api/user/reset-password', async (req, res) => {
+  const { sub } = req.body;
+
+  const ticket = await auth0.auth0ManagementClient.createPasswordChangeTicket({
+    user_id: sub,
+  });
+
+  return res.send(ticket);
 });
 app.listen(3000, () => {
   console.log('Server running on port 3000');
