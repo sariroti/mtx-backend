@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const { auth } = require('express-openid-connect');
+const dayJS = require('dayjs');
 
 const express = require('express');
 const app = express();
@@ -118,6 +119,31 @@ app.get('/api/user', async (req, res) => {
   });
 
   return res.send(users);
+});
+
+app.get('/api/user/statistic', async (req, res) => {
+  const payload = {
+    totalUser: 0,
+    totalUserActiveToday: 0,
+    totalUserActiveLast7Day: 0,
+  };
+  const todayDate = dayJS().format('YYYY-MM-DD');
+  const last7Date = dayJS().add(-7).format('YYYY-MM-DD');
+
+  const users = await auth0.auth0ManagementClient.getUsers();
+  const usersActiveToday = await auth0.auth0ManagementClient.getUsers({
+    q: `last_login:"${todayDate}"`,
+  });
+
+  const usersActiveLast7day = await auth0.auth0ManagementClient.getUsers({
+    q: `last_login:[${last7Date} TO ${todayDate}]`,
+  });
+
+  payload.totalUser = users.length;
+  payload.totalUserActiveToday = usersActiveToday.length;
+  payload.totalUserActiveLast7Day = usersActiveLast7day.length;
+
+  return res.send(payload);
 });
 app.listen(3000, () => {
   console.log('Server running on port 3000');

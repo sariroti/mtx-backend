@@ -14,4 +14,15 @@ function getUsers() {
   });
 }
 
+function getUserStatistic() {
+  $.get('/api/user/statistic', function (response) {
+    console.log(response);
+
+    $('#total-users').text(response.totalUser);
+    $('#total-users-today').text(response.totalUser);
+    $('#total-users-last7day').text(response.totalUser);
+  });
+}
+
 getUsers();
+getUserStatistic();
