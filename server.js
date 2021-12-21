@@ -43,9 +43,13 @@ app.get('/', async (req, res) => {
 
   if (!req.oidc.isAuthenticated()) return res.redirect('/login');
 
-  res.render('index', {
+  return res.redirect('/dashboard');
+});
+
+app.get('/dashboard', async (req, res) => {
+  res.render('dashboard', {
     title: 'dashboard',
-    message: 'Hello there!',
+
     user: req.oidc.user,
   });
 });
@@ -60,6 +64,7 @@ app.get('/profile', async (req, res) => {
 
   const id = sub.split('|')[1];
 
+  console.log(user);
   const nameDB = userService.getById(id);
 
   const payload = {
@@ -87,9 +92,12 @@ app.put('/api/user/profile', async (req, res) => {
 });
 
 app.get('/reset-password', async (req, res) => {
+  const isReset = req.oidc.user.sub.indexOf('auth0') >= 0;
+
   res.render('reset-password', {
     title: 'reset password',
     user: req.oidc.user,
+    isReset,
   });
 });
 
@@ -101,6 +109,15 @@ app.post('/api/user/reset-password', async (req, res) => {
   });
 
   return res.send(ticket);
+});
+
+app.get('/api/user', async (req, res) => {
+  const users = await auth0.auth0ManagementClient.getUsers({
+    page: 0,
+    per_page: 10,
+  });
+
+  return res.send(users);
 });
 app.listen(3000, () => {
   console.log('Server running on port 3000');

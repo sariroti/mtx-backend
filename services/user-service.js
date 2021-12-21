@@ -1,7 +1,14 @@
 const jsonDB = require('../db').jsonDB;
 
 function getById(id) {
-  return jsonDB.getData(`/user/${id}`);
+  const current = null;
+  try {
+    jsonDB.getData(`/user/${id}`);
+  } catch (e) {
+    console.log(e);
+  }
+
+  return current;
 }
 
 function save(id, name) {
