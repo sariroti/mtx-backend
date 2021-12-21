@@ -2,7 +2,7 @@ function saveProfile() {
   const name = $('#user-name').val();
 
   $.ajax({
-    url: '/api/user/profile',
+    url: '/api/v1/profile',
     type: 'PUT',
     data: { name },
     success: function (response) {

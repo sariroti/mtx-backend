@@ -1,6 +1,6 @@
 function getUsers() {
-  $.get('/api/user', function (response) {
-    response.map((r) => {
+  $.get('/api/v1/user', function (response) {
+    response.payload.map((r) => {
       $('#user-list tbody').append(`
       <tr>
         <th>${r.name}</th>
@@ -15,12 +15,10 @@ function getUsers() {
 }
 
 function getUserStatistic() {
-  $.get('/api/user/statistic', function (response) {
-    console.log(response);
-
-    $('#total-users').text(response.totalUser);
-    $('#total-users-today').text(response.totalUser);
-    $('#total-users-last7day').text(response.totalUser);
+  $.get('/api/v1/user/statistic', function (response) {
+    $('#total-users').text(response.payload.totalUser);
+    $('#total-users-today').text(response.payload.totalUser);
+    $('#total-users-last7day').text(response.payload.totalUser);
   });
 }
 

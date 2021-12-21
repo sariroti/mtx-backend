@@ -1,9 +1,9 @@
 const jsonDB = require('../db').jsonDB;
 
 function getById(id) {
-  const current = null;
+  let current = null;
   try {
-    jsonDB.getData(`/user/${id}`);
+    current = jsonDB.getData(`/user/${id}`);
   } catch (e) {
     console.log(e);
   }
