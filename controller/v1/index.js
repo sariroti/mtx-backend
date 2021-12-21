@@ -11,6 +11,8 @@ router.get('/', async (req, res) => {
   return res.redirect('/dashboard');
 });
 
+router.post('/callback', async (req, res) => {});
+
 router.use(dashboardRouter);
 router.use(profileRouter);
 router.use(resetPasswordRouter);
