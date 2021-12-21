@@ -3,7 +3,23 @@ extends index.pug
 block content 
 
     h1(class="mt-3") Dashboard 
-    
+
+    div(class="col-md-10 row d-inline-flex justify-content-between")
+        h2(class="mt-3") User Statistic
+        div(class="card", style="width: 18rem;")
+            div(class="card-body text-center")
+                h1#total-users(class="card-title display-1") 
+                h6#total-users-text(class="ard-subtitle mb-2 text-muted") Total Users
+        div(class="card", style="width: 18rem;")
+            div(class="card-body text-center")
+                h1#total-users-today(class="card-title display-1") 
+                h6#total-users-text(class="ard-subtitle mb-2 text-muted") Active Today
+        div(class="card", style="width: 18rem;")
+            div(class="card-body text-center")
+                h1#total-users-last7day(class="card-title display-1") 
+                h6#total-users-text(class="ard-subtitle mb-2 text-muted") Active Last 7 Day
+     
+      
 
     div(class="col-md-10")
         h2(class="mt-3") Users
