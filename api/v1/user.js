@@ -4,9 +4,13 @@ const auth0 = require('../../auth');
 const dayJS = require('dayjs');
 
 router.get('/', async (req, res) => {
+  let { skip, take } = req.query;
+
+  skip = skip || 0;
+  take = take || 10;
   const users = await auth0.auth0ManagementClient.getUsers({
-    page: 0,
-    per_page: 10,
+    page: skip,
+    per_page: take,
   });
   res.locals.payload.payload = users;
 
