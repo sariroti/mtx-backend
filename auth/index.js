@@ -1,13 +1,22 @@
 const Auth0ManagementClient = require('auth0').ManagementClient;
 const Auth0AuthenticationClient = require('auth0').AuthenticationClient;
 
+// const config = {
+//   authRequired: false,
+//   auth0Logout: true,
+//   baseURL: 'http://localhost:3000',
+//   clientID: 'IMjyMsTuGtUlIEBBGs9mDzc78p0iBRvM',
+//   issuerBaseURL: 'https://dev-4-0pia4h.us.auth0.com',
+//   secret: 'ca369yhWRgX2-D6j24cgGpKabhxu1ILWF2QNwuU-x50FiuHp2qX9NCnjMRLaBgK0',
+// };
+
 const config = {
   authRequired: false,
   auth0Logout: true,
-  baseURL: 'http://localhost:3000',
-  clientID: 'IMjyMsTuGtUlIEBBGs9mDzc78p0iBRvM',
-  issuerBaseURL: 'https://dev-4-0pia4h.us.auth0.com',
-  secret: 'ca369yhWRgX2-D6j24cgGpKabhxu1ILWF2QNwuU-x50FiuHp2qX9NCnjMRLaBgK0',
+  baseURL: process.env.AUTH0_CONFIG_BASE_URL,
+  clientID: process.env.AUTH0_CONFIG_CLIENT_ID,
+  issuerBaseURL: process.env.AUTH0_CONFIG_ISSUER_BASE_URL,
+  secret: process.env.AUTH0_CONFIG_CLIENT_SECRET,
 };
 
 const auth0ManagementClient = new Auth0ManagementClient({
