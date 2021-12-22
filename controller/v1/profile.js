@@ -12,10 +12,8 @@ router.get('/profile', async (req, res) => {
 
   const id = sub.split('|')[1];
 
-  console.log(id);
-
   const nameDB = userService.getById(id);
-  console.log(nameDB);
+
   const payload = {
     name: user.name,
     email: user.email,

@@ -12,8 +12,6 @@ function getById(id) {
 }
 
 function save(id, name) {
-  console.log(id);
-  console.log(name);
   jsonDB.push(`/user/${id}`, name);
 }
 
