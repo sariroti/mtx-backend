@@ -12,7 +12,7 @@ Backend submission created by : Budi Erwanto
    - Cookies and Logout, logout is ✔️ but for the cookies already try to search auth0 seems the option is to use built in token with expiry rather than cookies. can be read here https://community.auth0.com/t/how-to-stay-logged-in-forever-ish/62926
    - User Database Dashboard ✔️
    - User Statistic ✔️
-   - Attention to detail bug finding on going will update later ❎
+   - Attention to detail bug finding on going will update later ⌛
 2. folders explanation
    - api : containing all apis
    - auth : currently store configuration for auth0
