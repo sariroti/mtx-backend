@@ -23,7 +23,7 @@ Backend submission created by : Budi Erwanto
    - services : functions that use in controller / api
    - views : using pugjs as view engine template
    - myDatabase.json : the place where everytime profile name edited
-   - Procfile : for heroku to use as starting point app
+   - Procfile : for heroku to use as starting point app command execution
    - swagger.json : for swagger api definition in JSON
 
 ## License
