@@ -4,7 +4,7 @@ Backend submission created by : Budi Erwanto
 
 ## source code
 
-1. Tasks
+1. Tasks 📓
    - Email verification ✔️
    - Login done ✔️
    - User Profile done ✔️
@@ -13,7 +13,7 @@ Backend submission created by : Budi Erwanto
    - User Database Dashboard ✔️
    - User Statistic ✔️
    - Attention to detail bug finding on going will update later ⌛
-2. folders explanation
+2. folders 📁
    - api : containing all apis
    - auth : currently store configuration for auth0
    - controller : containing all controller for rendering views
