@@ -36,8 +36,9 @@ router.get('/statistic', async (req, res) => {
     totalUserActiveLast7Day: 0,
   };
   const todayDate = dayJS().format('YYYY-MM-DD');
-  const last7Date = dayJS().add(-7).format('YYYY-MM-DD');
+  const last7Date = dayJS().subtract(7, 'day').format('YYYY-MM-DD');
 
+  console.log(last7Date);
   const users = await auth0.auth0ManagementClient.getUsers();
   const usersActiveToday = await auth0.auth0ManagementClient.getUsers({
     q: `last_login:"${todayDate}"`,
@@ -46,6 +47,8 @@ router.get('/statistic', async (req, res) => {
   const usersActiveLast7day = await auth0.auth0ManagementClient.getUsers({
     q: `last_login:[${last7Date} TO ${todayDate}]`,
   });
+
+  console.log(usersActiveLast7day);
 
   payload.totalUser = users.length;
   payload.totalUserActiveToday = usersActiveToday.length;
