@@ -17,8 +17,8 @@ function getUsers() {
 function getUserStatistic() {
   $.get('/api/v1/user/statistic', function (response) {
     $('#total-users').text(response.payload.totalUser);
-    $('#total-users-today').text(response.payload.totalUser);
-    $('#total-users-last7day').text(response.payload.totalUser);
+    $('#total-users-today').text(response.payload.totalUserActiveToday);
+    $('#total-users-last7day').text(response.payload.totalUserActiveLast7Day);
   });
 }
 
